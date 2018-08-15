@@ -1,0 +1,11 @@
+tensorflow
+numpy
+scipy
+nltk
+sklearn
+pandas
+requests
+watchdog
+jsonrpclib-pelix
+tap-news-utils
+certifi

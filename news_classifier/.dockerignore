@@ -1,0 +1,11 @@
+# glove folder
+/data/*
+!/data/simple_data
+
+# model folder
+/model/*
+
+# python bin code
+*.pyc
+__pycache__/
+.DS_Store

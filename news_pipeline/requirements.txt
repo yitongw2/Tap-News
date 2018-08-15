@@ -1,0 +1,6 @@
+redis
+python-dateutil
+numpy
+scipy
+sklearn
+tap-news-utils

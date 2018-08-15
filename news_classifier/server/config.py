@@ -1,0 +1,5 @@
+MONGO_DB_HOST = 'localhost'
+MONGO_DB_PORT = '27017'
+
+SERVER_HOST = 'localhost'
+SERVER_PORT = 6060

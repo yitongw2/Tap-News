@@ -1,0 +1,4 @@
+scrapy
+tap_news_utils
+python-dateutil
+newspaper3k

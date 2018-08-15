@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "jayson": "^2.0.6",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.1",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.17.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "validator": "^10.4.0",
+    "winston": "^3.0.0"
+  }
+}

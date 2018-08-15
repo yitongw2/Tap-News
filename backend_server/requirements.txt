@@ -1,0 +1,3 @@
+jsonrpclib-pelix
+tap_news_utils
+redis

@@ -1,0 +1,27 @@
+.news-description {
+  font-size: 20px;
+}
+
+.news_title {
+  color: black;
+  font-size: 25px;
+}
+
+.news_footer {
+  color: black;
+  font-size: 20px;
+}
+
+.news_card {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.news_img {
+    padding-left: 20px;
+    flex-shrink: 0;
+    min-width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+}

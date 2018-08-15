@@ -1,0 +1,20 @@
+# System Files
+.DS_Store
+*.pyc
+*/dump.rdb
+__pycache__
+.ipynb_checkpoints
+/node_modules
+/mongodb/data/*
+!/mongodb/data/README.md
+/zeppelin/notebook/*
+!/zeppelin/notebook/README.md
+/zeppelin/logs/*
+!/zeppelin/logs/README.md
+/redis/data/*
+!/redis/data/README.md
+/jupyter-tensorflow-notebook/data
+/tap_news_utils/dist
+/tap_news_utils/tap_news_utils.egg-info
+*/data/glove.6B
+*/model
