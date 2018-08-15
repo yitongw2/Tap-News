@@ -5,7 +5,7 @@ Tap-News is a complex web application for users to view latest news around the g
   - Front-End
     - React UI
   - Back-End
-    - Node.js server with RESTful API
+    - Node.js server handling client-side requests
     - News Pipeline including obtaining news, deduping news and inserting news to database
     - News Scraper that scrapes obtained news
     - News Classifier with Tensorflow pre-trained CNN model 
