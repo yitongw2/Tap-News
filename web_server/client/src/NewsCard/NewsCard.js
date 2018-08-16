@@ -9,7 +9,7 @@ class NewsCard extends React.Component {
   redirectToUrl(url, e) {
     e.preventDefault();
     this.sendClickLog();
-    //window.open(url, '_blank');
+    window.open(url, '_blank');
   }
 
   sendClickLog() {
