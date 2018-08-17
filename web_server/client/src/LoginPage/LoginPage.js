@@ -25,7 +25,7 @@ class LoginPage extends React.Component {
     console.log('password', password);
 
     // Post login data.
-    const url = 'http://' + window.location.hostname + ':3000/users/login';
+    const url = 'http://' + window.location.host+ '/users/login';
     const request = new Request(
       url,
       {
