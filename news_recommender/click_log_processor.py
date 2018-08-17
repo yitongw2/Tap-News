@@ -65,7 +65,7 @@ def handle_message(msg):
     if (news is None
         or 'class' not in news
         or news['class'] not in classes):
-        print ('ERROR news is none or not yet classified or not a valid class')
+        print ('ERROR news is none or not yet classified or not a valid class', news)
         return
 
     click_class = news['class']

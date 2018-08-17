@@ -1,10 +1,10 @@
 classes = [
     "World",
-    "US",
+    "U.S.",
     "Business",
     "Technology",
     "Entertainment",
     "Sports",
     "Health",
-    "Crime",
+    "Crime"
 ]

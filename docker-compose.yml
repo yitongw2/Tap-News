@@ -29,6 +29,8 @@ services:
     build: ./news_classifier
     ports:
       - 6060:6060
+    links:
+      - mongodb
   news_scraper:
     build: ./news_scraper
   news_monitor:
