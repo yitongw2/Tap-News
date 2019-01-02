@@ -1,12 +1,9 @@
 import './IntroPage.css';
 
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
 import { Link } from 'react-router-dom'
 import { Jumbotron } from 'reactstrap';
 
 import React from 'react';
-
 
 class IntroPage extends React.Component {
   render() {

@@ -1,8 +1,10 @@
 import './NavBar.css';
 
-import React from 'react';
 import Auth from '../Auth/Auth';
+
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+
+import React from 'react';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -12,6 +14,8 @@ class NavBar extends React.Component {
     this.state = {
       isOpen: false
     };
+
+    this.logout = this.logout.bind(this);
   }
 
   toggle() {
@@ -37,10 +41,10 @@ class NavBar extends React.Component {
             (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  Hi, {Auth.getEmail()}
+                  <div className="link">Hi, {Auth.getEmail()}</div>
                 </NavItem>
                 <NavItem>
-                  <NavLink onClick={() => this.logout()}>Log out</NavLink>
+                  <NavLink onClick={this.logout}>Log out</NavLink>
                 </NavItem>
               </Nav>
             ) :
@@ -60,50 +64,7 @@ class NavBar extends React.Component {
       </Navbar>
     </div>
     );
-    /*
-      return (
-          <Navbar className="header" light expand="lg">
-            <NavbarBrand className="brand-text" href="/">Tap News</NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse className="collapse" isOpen={this.state.isOpen} navbar>
-                {
-                  Auth.isUserAuthenticated() ?
-                  (
-                    <Nav className="ml-auto" navbar>
-                     <NavItem className="nav-item">{Auth.getEmail()}</NavItem>
-                     <NavItem classNameName="nav-item"><NavLink onClick={() => this.logout()}>Log out</NavLink></NavItem>
-                    </Nav>
-                  ):
-                  (
-                    <Nav className="ml-auto" navbar>
-                      <NavItem className="nav-item"><NavLink href="/login">Log in</NavLink></NavItem>
-                      <NavItem className="nav-item"><NavLink href="/signup">Sign up</NavLink></NavItem>
-                    </Nav>
-                  )
-                }
-            </Collapse>
-          </Navbar>
-      );
-      */
-    }
-}
-
-/*
-<div className="collapse navbar-collapse">
-  <ul classNameName="navbar-nav">
-  {Auth.isUserAuthenticated() ?
-    (<div>
-      <li classNameName="nav-item">{Auth.getEmail()}</li>
-      <li classNameName="nav-item"><a onClick={() => this.logout()}>Log out</a></li>
-     </div>)
-     :
-     (<div>
-       <li classNameName="nav-item"><Link to="/login">Log in</Link></li>
-       <li classNameName="nav-item"><Link to="/signup">Sign up</Link></li>
-      </div>)
   }
- </ul>
-</div>
-*/
+}
 
 export default NavBar;

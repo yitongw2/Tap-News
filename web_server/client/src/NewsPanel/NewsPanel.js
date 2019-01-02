@@ -1,11 +1,12 @@
 import './NewsPanel.css';
 
-import React from 'react';
 import _ from 'lodash';
-import loader from './loader.gif';
 
+import loader from '../Resource/loader.gif';
 import NewsCard from '../NewsCard/NewsCard.js';
 import Auth from '../Auth/Auth';
+
+import React from 'react';
 
 class NewsPanel extends React.Component {
   constructor() {

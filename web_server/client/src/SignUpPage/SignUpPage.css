@@ -19,8 +19,3 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
-#loading {
-  position: absolute;
-  opacity: 0.5;
-}

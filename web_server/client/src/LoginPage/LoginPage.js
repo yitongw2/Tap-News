@@ -3,6 +3,7 @@ import './LoginPage.css';
 
 // custom component
 import Auth from '../Auth/Auth';
+import loader from '../Resource/loader.gif';
 
 // 3 party library
 import { Button, Form, FormGroup, Label, Input, FormFeedback, Alert } from 'reactstrap';
@@ -16,6 +17,7 @@ class LoginPage extends React.Component {
     super();
 
     this.state = {
+      loading: false,
       valid: {
         email: '',
         password: '',
@@ -36,6 +38,10 @@ class LoginPage extends React.Component {
   submitForm(event) {
     event.preventDefault();
 
+    this.setState({
+        loading: true
+    });
+
     const email = this.state.user.email;
     const password = this.state.user.password;
 
@@ -43,6 +49,7 @@ class LoginPage extends React.Component {
       .catch(error => {
         // Handle Errors here.
         this.setState({
+          loading: false,
           error: error.message
         });
       });
@@ -57,7 +64,7 @@ class LoginPage extends React.Component {
 
   validatePassword(password) {
     const valid = this.state.valid;
-    var password = password.trim();
+
     if (password.length >= 8) {
       valid.password = 'valid';
     } else {
@@ -70,7 +77,7 @@ class LoginPage extends React.Component {
   }
 
   validateEmail(email) {
-    const email_pattern = RegExp('^[^!#$%&\'*+-/=?^_`{|}~]+(.[^!#$%&\'*+-/=?^_`{|}~])*@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+    const email_pattern = RegExp('^[^!#$%&\'*+-/=?^_`{|}~]+(.[^!#$%&\'*+-/=?^_`{|}~])*@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z0-9]+.)+[a-zA-Z]{2,}))$');
     const valid = this.state.valid;
 
     if (email_pattern.test(email)) {
@@ -86,7 +93,7 @@ class LoginPage extends React.Component {
 
   validateUser(event) {
     const field_name = event.target.name;
-    const field_val = event.target.value;
+    const field_val = event.target.value.trim();
 
     switch (field_name) {
       case "email":
@@ -114,11 +121,17 @@ class LoginPage extends React.Component {
     return (
       <div className='container-fluid out-container'>
         <div className='form-container'>
+          {
+            this.state.loading &&
+            <div id='loading'>
+              <img src={loader} alt='loadings'></img>
+            </div>
+          }
           <h4>Log in</h4>
           <Form onSubmit={this.submitForm}>
             {this.state.error !== '' && <Alert color="danger">{this.state.error}</Alert>}
             <FormGroup>
-              <Label for="exampleEmail">Email</Label>
+              <Label for="email">Email</Label>
               <Input type="email" name="email" id="email" placeholder="myemail@email.com"
               onChange={e => {
                 this.validateUser(e);
@@ -126,10 +139,10 @@ class LoginPage extends React.Component {
               }}
               valid={this.state.valid.email === 'valid'}
               invalid={this.state.valid.email === 'invalid'}  />
-              </FormGroup>
               <FormFeedback>Invalid email address.</FormFeedback>
+              </FormGroup>
             <FormGroup>
-              <Label for="examplePassword">Password</Label>
+              <Label for="password">Password</Label>
               <Input type="password" name="password" id="password" placeholder="********"
               onChange={e => {
                 this.validateUser(e);
