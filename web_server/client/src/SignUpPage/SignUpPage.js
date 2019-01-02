@@ -1,5 +1,6 @@
 import React from 'react';
 import SignUpForm from './SignUpForm';
+import { auth } from '../firebase';
 
 class SignUpPage extends React.Component {
   constructor(props) {
@@ -24,47 +25,19 @@ class SignUpPage extends React.Component {
     const password = this.state.user.password;
     const confirm_password = this.state.user.confirm_password;
 
-    console.log('email:', email);
-    console.log('password:', password);
-    console.log('confirm_password:', confirm_password);
-
     if (password !== confirm_password) {
       return;
     }
 
-    // Post registeration data.
-    const url = 'http://' + window.location.host + '/users/signup';
-    const request = new Request(
-      url,
-      {method:'POST', headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: this.state.user.email,
-        password: this.state.user.password
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        this.props.history.push('/login');
       })
-    });
-
-    fetch(request).then(response => {
-      if (response.status === 200) {
+      .catch(error => {
+        let errors = {summary: error.message};
         this.setState({
-          errors: {}
-        });
-
-        console.log('redirect to login');
-        // change the current URL to /login
-        this.props.history.push("/login");
-      } else {
-        console.log('sign up error');
-        response.json().then(json => {
-          console.log(json);
-          const errors = json.errors ? json.errors : {};
-          errors.summary = json.message;
-          console.log(this.state.errors);
-          this.setState({errors});
-        });
-      }
+          errors: errors
+      });
     });
   }
 

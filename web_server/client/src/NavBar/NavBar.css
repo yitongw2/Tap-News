@@ -1,7 +1,18 @@
-.nav-wrapper {
-  background-color: transparent;
+.link {
+  color: black;
 }
 
-.brand-logo {
-  margin-left: 20px;
+.nav-bar {
+  background-color: #f2f2f2;
+}
+
+.nav-collapse {
+  background-color: #f2f2f2;
+  z-index: 1000;
+  border-radius: 5px;
+}
+
+.brand-text {
+  font-size: 2em;
+  color: white;
 }

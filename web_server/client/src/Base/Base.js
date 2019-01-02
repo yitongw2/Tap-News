@@ -14,7 +14,7 @@ const Base = () => (
   <Router>
     <div>
       <NavBar />
-      <br/>
+      <br />
       <Route exact path="/" render={() => (Auth.isUserAuthenticated() ? (<App />) : (<IntroPage />))} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/signup" component={SignUpPage} />
