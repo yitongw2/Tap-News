@@ -1,7 +1,8 @@
 import './NewsCard.css';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Auth from '../Auth/Auth';
+
 import moment from 'moment'
+
+import Auth from '../Auth/Auth';
 
 import React from 'react';
 

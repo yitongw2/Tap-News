@@ -1,9 +1,11 @@
 .link {
   color: black;
-  margin-left: 5px;
 }
 
 .nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #f2f2f2;
 }
 
@@ -13,7 +15,11 @@
   border-radius: 5px;
 }
 
-.brand-text {
-  font-size: 2em;
-  color: white;
+.brand {
+  color: black;
+}
+
+.user_name {
+  color: black;
+  padding-left: 25px;
 }

@@ -124,7 +124,7 @@ class SignUpPage extends React.Component {
 
   render() {
     return (
-      <div className='container-fluid out-container'>
+      <div className='container-fluid'>
         <div className='form-container'>
           <h4>Sign up</h4>
           {

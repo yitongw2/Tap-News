@@ -63,8 +63,8 @@ class NewsPanel extends React.Component {
       return;
     }
 
-    const news_url = 'http://' + window.location.hostname +
-      ':3000/news/userId=' + Auth.getEmail() + "&pageNum=" + this.state.pageNum;
+    const news_url = 'http://' + window.location.host +
+      '/news/userId=' + Auth.getEmail() + "&pageNum=" + this.state.pageNum;
 
     const request = new Request(encodeURI(news_url), {
       method: 'GET',
@@ -73,8 +73,14 @@ class NewsPanel extends React.Component {
       }
     });
 
+    /*
     fetch(request)
-      .then(res => res.json())
+      .then(res => {
+        return res.json();
+      }, rej => {
+        Auth.deauthenticateUser();
+        return {};
+      })
       .then(news => {
         console.log('# of news fetched ', news.length);
         if (!news || news.length === 0) {
@@ -87,6 +93,7 @@ class NewsPanel extends React.Component {
           pageNum: this.state.pageNum + 1
         });
       });
+      */
   }
 
 

@@ -1,8 +1,9 @@
 import './NavBar.css';
 
-import Auth from '../Auth/Auth';
-
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { connect } from 'react-redux'
+import { logOut } from '../Redux/actions';
 
 import React from 'react';
 
@@ -25,46 +26,59 @@ class NavBar extends React.Component {
   }
 
   logout() {
-    Auth.deauthenticateUser();
-    this.props.history.push('/');
+    this.toggle();
+    this.props.deauthenticateUser();
   }
 
   render() {
     return (
-    <div className="container-fluid">
       <Navbar className='nav-bar' light expand="md">
-        <NavbarBrand className="brand-text" href="/">Tap News</NavbarBrand>
+        <NavbarBrand className='brand' href="/">Tap News</NavbarBrand>
         <NavbarToggler type="button" onClick={this.toggle} />
-        <Collapse className="nav-collapse" isOpen={this.state.isOpen} navbar>
+
+        <Collapse isOpen={this.state.isOpen} navbar className="nav-collapse">
           {
-            Auth.isUserAuthenticated() ?
+            this.props.isLoggedIn ?
             (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <div className="link">Hi, {Auth.getEmail()}</div>
+                  <div className="user_name">{this.props.email}</div>
                 </NavItem>
                 <NavItem>
-                  <NavLink onClick={this.logout}>Log out</NavLink>
+                  <Link to="/" className="link" onClick={this.logout}>Logout</Link>
                 </NavItem>
               </Nav>
             ) :
             (
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <a className="link" href="/login">Login</a>
+                  <Link to="/login" onClick={this.toggle} className="link">Login</Link>
                 </NavItem>
                 <NavItem>
-                  <a className="link" href="/signup">Signup</a>
+                  <Link to="/signup" onClick={this.toggle} className="link">Signup</Link>
                 </NavItem>
               </Nav>
             )
           }
-
         </Collapse>
       </Navbar>
-    </div>
     );
   }
-}
+};
 
-export default NavBar;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isLoggedIn: state.token != null,
+    email: state.email
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deauthenticateUser: () => {
+      logOut()(dispatch);
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

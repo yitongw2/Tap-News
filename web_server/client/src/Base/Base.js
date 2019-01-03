@@ -1,25 +1,28 @@
 import './Base.css';
 
-import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../Redux/store'
 
 import App from '../App/App'
-import Auth from '../Auth/Auth';
 import NavBar from '../NavBar/NavBar';
-import IntroPage from '../IntroPage/IntroPage';
 import LoginPage from '../LoginPage/LoginPage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 
+import React from 'react';
+
 const Base = () => (
-  <Router>
-    <div>
-      <NavBar />
-      <br />
-      <Route exact path="/" render={() => (Auth.isUserAuthenticated() ? (<App />) : (<IntroPage />))} />
-      <Route exact path="/login" component={LoginPage} />
-      <Route exact path="/signup" component={SignUpPage} />
-    </div>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <div>
+        <NavBar />
+        <br />
+        <Route exact path="/" component={<App>} />
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/signup" component={SignUpPage} />
+      </div>
+    </Router>
+  </Provider>
 );
 
 export default Base;

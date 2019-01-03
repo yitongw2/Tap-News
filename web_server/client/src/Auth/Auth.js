@@ -1,31 +1,40 @@
 import { auth } from '../firebase';
 
-class Auth {
-  static authenticateUser() {
-    auth.currentUser.getIdToken()
-      .then(token => {
-        localStorage.setItem('token', token);
-      })
-  }
-
-  static isUserAuthenticated() {
-    return auth.currentUser != null;
-  }
-
-  static deauthenticateUser() {
-    auth.signOut()
-      .catch(error => {
-        console.log(error.message);
-      });
-  }
-
-  static getToken() {
-    return localStorage.getItem('token');
-  }
-
-  static getEmail() {
-    return auth.currentUser.email;
-  }
+async function authenticateUser() {
+  const user = auth.currentUser;
+  localStorage.setItem('email', user.email)
+  localStorage.setItem('token', await user.getIdToken());
 }
+
+function isUserAuthenticated() {
+  return localStorage.getItem('token') != null;
+}
+
+function deauthenticateUser() {
+  auth.signOut()
+    .then(() => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('email');
+    })
+    .catch(error => {
+      console.log('error: '+error.message);
+    });
+}
+
+function getToken() {
+  return localStorage.getItem('token');
+}
+
+function getEmail() {
+  return localStorage.getItem('email');
+}
+
+const Auth = {
+  'authenticateUser': authenticateUser,
+  'deauthenticateUser': deauthenticateUser,
+  'isUserAuthenticated':  isUserAuthenticated,
+  'getToken': getToken,
+  'getEmail': getEmail
+};
 
 export default Auth;

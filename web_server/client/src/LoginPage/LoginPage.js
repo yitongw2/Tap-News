@@ -2,19 +2,20 @@
 import './LoginPage.css';
 
 // custom component
-import Auth from '../Auth/Auth';
 import loader from '../Resource/loader.gif';
 
 // 3 party library
 import { Button, Form, FormGroup, Label, Input, FormFeedback, Alert } from 'reactstrap';
 import { auth } from '../firebase';
+import { connect } from 'react-redux'
+import { logIn } from '../Redux/actions';
 
 // react
 import React from 'react';
 
 class LoginPage extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       loading: false,
@@ -56,7 +57,7 @@ class LoginPage extends React.Component {
 
     auth.onAuthStateChanged(user => {
       if (user) {
-        Auth.authenticateUser();
+        this.props.authenticateUser();
         this.props.history.push('/');
       }
     });
@@ -119,7 +120,7 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <div className='container-fluid out-container'>
+      <div className='container-fluid'>
         <div className='form-container'>
           {
             this.state.loading &&
@@ -161,6 +162,14 @@ class LoginPage extends React.Component {
       </div>
     );
   }
-}
+};
 
-export default LoginPage;
+const mapDispatchToProps = dispatch => {
+  return {
+    authenticateUser: () => {
+      logIn()(dispatch);
+    }
+  }
+};
+
+export default connect(null, mapDispatchToProps)(LoginPage);
