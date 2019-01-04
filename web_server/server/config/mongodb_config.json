@@ -1,7 +1,0 @@
-{
-    "DBHost" : "ds127811.mlab.com",
-    "DBPort" : "27811",
-    "DBName" : "tn-db",
-    "DBUser" : "user",
-    "DBPassword" : "user27811"
-}

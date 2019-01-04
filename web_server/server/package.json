@@ -12,6 +12,8 @@
     "cors": "^2.8.4",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "firebase": "^5.7.2",
+    "firebase-admin": "^6.4.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "jayson": "^2.0.6",
@@ -19,8 +21,6 @@
     "mongoose": "^5.2.1",
     "morgan": "~1.9.0",
     "nodemon": "^1.17.5",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
     "validator": "^10.4.0",
     "winston": "^3.0.0"
   }

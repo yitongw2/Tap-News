@@ -16,7 +16,6 @@ router.get('/userId=:userId&pageNum=:pageNum', function(req, res, next) {
 
 /* Log news click event. */
 router.post('/userId=:userId&newsId=:newsId', function(req, res, next) {
-  console.log('Logging news click...');
   var user_id = req.params['userId'];
   var news_id = req.params['newsId'];
 

@@ -1,4 +1,0 @@
-{
-  "jwtSecret": "tap-news",
-  "expiresIn": 36000
-}
