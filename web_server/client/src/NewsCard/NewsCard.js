@@ -1,8 +1,7 @@
 import './NewsCard.css';
 
 import moment from 'moment'
-
-import Auth from '../Auth/Auth';
+import { connect } from 'react-redux';
 
 import React from 'react';
 
@@ -15,16 +14,14 @@ class NewsCard extends React.Component {
 
   sendClickLog() {
     const url = 'http://' + window.location.host +
-      '/news/userId=' + Auth.getEmail() + '&newsId=' + this.props.news.digest;
-
-    console.log('sending log click :', url);
+      '/news/userId=' + this.props.email + '&newsId=' + this.props.news.digest;
 
     const request = new Request(
       encodeURI(url),
       {
         method: 'POST',
         headers: {
-          'Authorization': 'bearer ' + Auth.getToken(),
+          'Authorization': 'bearer ' + this.props.token,
         }
       }
     );
@@ -56,10 +53,16 @@ class NewsCard extends React.Component {
             <small class="text-muted">Published at {moment(this.props.news.publishedAt.$date).format('YYYY-MM-DD HH:mm')}</small>
           </div>
         }
-
       </div>
     );
   }
-}
+};
 
-export default NewsCard;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    email: state.email,
+    token: state.token
+  };
+};
+
+export default connect(mapStateToProps)(NewsCard);

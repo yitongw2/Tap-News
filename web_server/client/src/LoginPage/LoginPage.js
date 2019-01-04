@@ -9,6 +9,7 @@ import { Button, Form, FormGroup, Label, Input, FormFeedback, Alert } from 'reac
 import { auth } from '../firebase';
 import { connect } from 'react-redux'
 import { logIn } from '../Redux/actions';
+import { Redirect } from 'react-router-dom';
 
 // react
 import React from 'react';
@@ -40,13 +41,20 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     this.setState({
-        loading: true
+      loading: true
     });
 
     const email = this.state.user.email;
     const password = this.state.user.password;
 
     auth.signInWithEmailAndPassword(email, password)
+      .then(user => {
+        this.props.authenticateUser();
+        this.setState({
+          loading: false,
+          error: ''
+        });
+      })
       .catch(error => {
         // Handle Errors here.
         this.setState({
@@ -54,13 +62,6 @@ class LoginPage extends React.Component {
           error: error.message
         });
       });
-
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.props.authenticateUser();
-        this.props.history.push('/');
-      }
-    });
   }
 
   validatePassword(password) {
@@ -119,48 +120,60 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    return (
-      <div className='container-fluid'>
-        <div className='form-container'>
-          {
-            this.state.loading &&
-            <div id='loading'>
-              <img src={loader} alt='loadings'></img>
-            </div>
-          }
-          <h4>Log in</h4>
-          <Form onSubmit={this.submitForm}>
-            {this.state.error !== '' && <Alert color="danger">{this.state.error}</Alert>}
-            <FormGroup>
-              <Label for="email">Email</Label>
-              <Input type="email" name="email" id="email" placeholder="myemail@email.com"
-              onChange={e => {
-                this.validateUser(e);
-                this.changeUser(e);
-              }}
-              valid={this.state.valid.email === 'valid'}
-              invalid={this.state.valid.email === 'invalid'}  />
-              <FormFeedback>Invalid email address.</FormFeedback>
+    if (this.props.isLoggedIn) {
+      return (
+        <Redirect to='/' />
+      );
+    } else {
+      return (
+        <div className='container-fluid'>
+          <div className='form-container'>
+            {
+              this.state.loading &&
+              <div id='loading'>
+                <img src={loader} alt='loadings'></img>
+              </div>
+            }
+            <h4>Log in</h4>
+            <Form onSubmit={this.submitForm}>
+              {this.state.error !== '' && <Alert color="danger">{this.state.error}</Alert>}
+              <FormGroup>
+                <Label for="email">Email</Label>
+                <Input type="email" name="email" id="email" placeholder="myemail@email.com"
+                onChange={e => {
+                  this.validateUser(e);
+                  this.changeUser(e);
+                }}
+                valid={this.state.valid.email === 'valid'}
+                invalid={this.state.valid.email === 'invalid'}  />
+                <FormFeedback>Invalid email address.</FormFeedback>
+                </FormGroup>
+              <FormGroup>
+                <Label for="password">Password</Label>
+                <Input type="password" name="password" id="password" placeholder="********"
+                onChange={e => {
+                  this.validateUser(e);
+                  this.changeUser(e);
+                }}
+                valid={this.state.valid.password === 'valid'}
+                invalid={this.state.valid.password === 'invalid'} />
+                <FormFeedback>Password must contain no less than 8 chars.</FormFeedback>
               </FormGroup>
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input type="password" name="password" id="password" placeholder="********"
-              onChange={e => {
-                this.validateUser(e);
-                this.changeUser(e);
-              }}
-              valid={this.state.valid.password === 'valid'}
-              invalid={this.state.valid.password === 'invalid'} />
-              <FormFeedback>Password must contain no less than 8 chars.</FormFeedback>
-            </FormGroup>
-            <div className="button-container">
-              <Button color="primary">Log in</Button>
-              <a href='/signup'>Sign up now</a>
-            </div>
-          </Form>
+              <div className="button-container">
+                <Button color="primary">Log in</Button>
+                <a href='/signup'>Sign up now</a>
+              </div>
+            </Form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+  }
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isLoggedIn: state.token != null
   }
 };
 
@@ -172,4 +185,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

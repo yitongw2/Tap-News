@@ -1,39 +1,41 @@
 import './NewsPanel.css';
 
 import _ from 'lodash';
+import { connect } from 'react-redux';
+import { logOut } from '../Redux/actions';
 
 import loader from '../Resource/loader.gif';
 import NewsCard from '../NewsCard/NewsCard.js';
-import Auth from '../Auth/Auth';
 
 import React from 'react';
 
 class NewsPanel extends React.Component {
-  constructor() {
-    super();
-    this.state = {news: null, pageNum: 1, loadedAll: false};
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      news: [],
+      pageNum: 1,
+      loadedAll: false,
+      loading: true
+    };
   }
 
   componentDidMount() {
     this.loadMoreNews();
     this.loadMoreNews = _.debounce(this.loadMoreNews, 1000);
-    window.addEventListener('scroll', () => {this.handleScroll()});
+    window.addEventListener('scroll', () => {
+      this.handleScroll();
+    });
   }
 
   render() {
-    if (this.state.news) {
-      return (
-        <div>
-          {this.renderNews()}
-        </div>
-      );
-    } else {
-      return (
-        <div id='msg-app-loading'>
-          <img src={loader} alt='loadings'></img>
-        </div>
-      );
-    }
+    return (
+      <div className='news_container'>
+        {this.state.news.length === 0 && (<img id='loader' src={loader} alt='loadings'></img>)}
+        {this.renderNews()}
+      </div>
+    );
   }
 
   renderNews() {
@@ -57,28 +59,25 @@ class NewsPanel extends React.Component {
   }
 
   loadMoreNews() {
-    console.log('Actually triggered loading more news');
-
     if (this.state.loadedAll === true){
       return;
     }
 
     const news_url = 'http://' + window.location.host +
-      '/news/userId=' + Auth.getEmail() + "&pageNum=" + this.state.pageNum;
+      '/news/userId=' + this.props.email + "&pageNum=" + this.state.pageNum;
 
     const request = new Request(encodeURI(news_url), {
       method: 'GET',
       headers: {
-        'Authorization': 'bearer ' + Auth.getToken(),
+        'Authorization': 'bearer ' + this.props.token,
       }
     });
 
-    /*
     fetch(request)
       .then(res => {
         return res.json();
       }, rej => {
-        Auth.deauthenticateUser();
+        this.props.deauthenticateUser();
         return {};
       })
       .then(news => {
@@ -93,7 +92,6 @@ class NewsPanel extends React.Component {
           pageNum: this.state.pageNum + 1
         });
       });
-      */
   }
 
 
@@ -105,4 +103,19 @@ class NewsPanel extends React.Component {
   }
 }
 
-export default NewsPanel;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    email: state.email,
+    token: state.token
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deauthenticateUser: () => {
+      logOut()(dispatch);
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsPanel);

@@ -4,6 +4,7 @@ import loader from '../Resource/loader.gif';
 
 import { Button, Form, FormGroup, Label, Input, FormFeedback, Alert } from 'reactstrap';
 import { auth } from '../firebase';
+import { Redirect } from 'react-router-dom';
 
 import React from 'react';
 
@@ -45,7 +46,10 @@ class SignUpPage extends React.Component {
 
     auth.createUserWithEmailAndPassword(email, password)
       .then(user => {
-        this.props.history.push('/login');
+        this.setState({
+          loading: false,
+          error: 'OK.'
+        });
       })
       .catch(error => {
         this.setState({
@@ -123,59 +127,65 @@ class SignUpPage extends React.Component {
   }
 
   render() {
-    return (
-      <div className='container-fluid'>
-        <div className='form-container'>
-          <h4>Sign up</h4>
-          {
-            this.state.loading &&
-            <div id='loading'>
-              <img src={loader} alt='loadings'></img>
-            </div>
-          }
-          <Form onSubmit={this.submitForm}>
-            {this.state.error !== '' && <Alert color="danger">{this.state.error}</Alert>}
-            <FormGroup>
-              <Label for="email">Email</Label>
-              <Input type="email" name="email" id="email" placeholder="myemail@email.com"
-              onChange={e => {
-                this.validateUser(e);
-                this.changeUser(e);
-              }}
-              valid={this.state.valid.email === 'valid'}
-              invalid={this.state.valid.email === 'invalid'}  />
-              <FormFeedback>Invalid email address.</FormFeedback>
+    if (this.state.error === 'OK.') {
+      return (
+        <Redirect to='/login' />
+      );
+    } else {
+      return (
+        <div className='container-fluid'>
+          <div className='form-container'>
+            <h4>Sign up</h4>
+            {
+              this.state.loading &&
+              <div id='loading'>
+                <img src={loader} alt='loadings'></img>
+              </div>
+            }
+            <Form onSubmit={this.submitForm}>
+              {this.state.error !== '' && <Alert color="danger">{this.state.error}</Alert>}
+              <FormGroup>
+                <Label for="email">Email</Label>
+                <Input type="email" name="email" id="email" placeholder="myemail@email.com"
+                onChange={e => {
+                  this.validateUser(e);
+                  this.changeUser(e);
+                }}
+                valid={this.state.valid.email === 'valid'}
+                invalid={this.state.valid.email === 'invalid'}  />
+                <FormFeedback>Invalid email address.</FormFeedback>
+                </FormGroup>
+              <FormGroup>
+                <Label for="password">Password</Label>
+                <Input type="password" name="password" id="password" placeholder="********"
+                onChange={e => {
+                  this.validateUser(e);
+                  this.changeUser(e);
+                }}
+                valid={this.state.valid.password === 'valid'}
+                invalid={this.state.valid.password === 'invalid'} />
+                <FormFeedback>Password must contain no less than 8 chars.</FormFeedback>
               </FormGroup>
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input type="password" name="password" id="password" placeholder="********"
-              onChange={e => {
-                this.validateUser(e);
-                this.changeUser(e);
-              }}
-              valid={this.state.valid.password === 'valid'}
-              invalid={this.state.valid.password === 'invalid'} />
-              <FormFeedback>Password must contain no less than 8 chars.</FormFeedback>
-            </FormGroup>
-            <FormGroup>
-              <Label for="confirmPassword">Confirm password</Label>
-              <Input type="password" name="confirmPassword" id="confirmPassword" placeholder="********"
-              onChange={e => {
-                this.validateUser(e);
-                this.changeUser(e);
-              }}
-              valid={this.state.valid.confirmPassword === 'valid'}
-              invalid={this.state.valid.confirmPassword === 'invalid'} />
-              <FormFeedback>Password does not match.</FormFeedback>
-            </FormGroup>
-            <div className="button-container">
-              <Button color="primary">Sign up</Button>
-            </div>
-          </Form>
+              <FormGroup>
+                <Label for="confirmPassword">Confirm password</Label>
+                <Input type="password" name="confirmPassword" id="confirmPassword" placeholder="********"
+                onChange={e => {
+                  this.validateUser(e);
+                  this.changeUser(e);
+                }}
+                valid={this.state.valid.confirmPassword === 'valid'}
+                invalid={this.state.valid.confirmPassword === 'invalid'} />
+                <FormFeedback>Password does not match.</FormFeedback>
+              </FormGroup>
+              <div className="button-container">
+                <Button color="primary">Sign up</Button>
+              </div>
+            </Form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
-}
+};
 
 export default SignUpPage;
