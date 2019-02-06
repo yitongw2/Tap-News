@@ -4,11 +4,8 @@ from scrapy.exceptions import DontCloseSpider
 from tap_news_utils.cloudAMQP_client import CloudAMQPClient
 from newspaper import Article
 
-SCRAPE_NEWS_TASK_QUEUE_URL = "amqp://njqlwvsl:KFk07rtuur6IuZGK1EyKKRel3nHyrB4v@emu.rmq.cloudamqp.com/njqlwvsl"
-SCRAPE_NEWS_TASK_QUEUE_NAME = "tap-news-scrape-news-task-queue"
 
-DEDUPE_NEWS_TASK_QUEUE_URL = "amqp://nvekfhak:grby6gpmQgZineVZkOCkJxWxehKj6LR-@spider.rmq.cloudamqp.com/nvekfhak"
-DEDUPE_NEWS_TASK_QUEUE_NAME = "tap-news-dedupe-news-task-queue"
+from config import SCRAPE_NEWS_TASK_QUEUE_URL, SCRAPE_NEWS_TASK_QUEUE_NAME, DEDUPE_NEWS_TASK_QUEUE_URL, DEDUPE_NEWS_TASK_QUEUE_NAME = "tap-news-dedupe-news-task-queue"
 
 SLEEP_TIME_IN_SECONDS = 5
 

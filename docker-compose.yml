@@ -3,9 +3,9 @@ services:
   nginx:
     build: ./nginx
     links:
-        - web_server
+      - web_server
     ports:
-        - 80:80
+      - 80:80
   web_server:
     build: ./web_server
     links:

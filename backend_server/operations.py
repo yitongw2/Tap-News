@@ -57,16 +57,16 @@ def getNewsSummariesForUser(user_id, page_num):
 
     # Get preference for the user
     preference = NewsRecommenderClient(NEWS_RECOMMENDER_HOST, NEWS_RECOMMENDER_PORT).getPreferenceForUser(user_id)
+    #preference = None
     topPreference = None
 
     if preference is not None and len(preference) > 0:
         topPreference = preference[0]
 
-    print ('topPreference', topPreference)
     for news in sliced_news:
         # Remove text field to save bandwidth.
         del news['text']
-        if news['class'] == topPreference:
+        if 'class' in news and news['class'] == topPreference:
             news['reason'] = 'Recommended'
 
     return json.loads(dumps(sliced_news))
