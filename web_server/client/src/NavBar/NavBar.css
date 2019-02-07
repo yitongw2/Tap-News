@@ -17,6 +17,12 @@
 
 .brand {
   color: black;
+  font-size: 1.5em;
+}
+
+.brand:hover, .brand:active {
+  text-decoration: none;
+  color: black;
 }
 
 .user_name {

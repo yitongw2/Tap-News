@@ -5,7 +5,7 @@ import React from 'react';
 class Timeline extends React.Component {
   render() {
     return (
-      <div className='container-fluid timeline_container'>
+      <div className='container-fluid timeline_container card'>
         <div className='timeline-header'>
           How Do We Deliver News To You?
         </div>

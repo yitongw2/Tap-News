@@ -1,7 +1,7 @@
 import './NavBar.css';
 
 import { Link } from 'react-router-dom';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 import { connect } from 'react-redux'
 import { logOut } from '../Redux/actions';
 
@@ -33,7 +33,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <Navbar className='nav-bar' light expand="md">
-        <NavbarBrand className='brand' href="/">Tap News</NavbarBrand>
+        <Link className='brand' to="/">Tap News</Link>
         <NavbarToggler type="button" onClick={this.toggle} />
 
         <Collapse isOpen={this.state.isOpen} navbar className="nav-collapse">

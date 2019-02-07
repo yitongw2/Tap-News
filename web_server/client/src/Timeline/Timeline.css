@@ -1,12 +1,11 @@
 .timeline_container {
   margin: 0;
-  background-color: #f2efef;
-  border-radius: 5px;
 }
 
 .timeline-header {
   font-size: 2.5em;
   text-align: center;
+  padding: 20px;
 }
 
 .timeline {

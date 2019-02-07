@@ -3,16 +3,22 @@ import './TechList.css';
 import redux from '../Resource/redux.png';
 import react from '../Resource/react.png';
 import mongodb from '../Resource/mongodb.png';
-import redis from '../Resource/redis.png'
+import redis from '../Resource/redis.png';
+import scrapy from '../Resource/scrapy.png';
+import nginx from '../Resource/nginx.png';
+import tensorflow from '../Resource/tensorflow.png';
+import nodejs from '../Resource/nodejs.png';
+import express from '../Resource/express.png';
+import docker from '../Resource/docker.png';
 
 import React from 'react';
 
 class TechList extends React.Component {
   render() {
     return (
-      <div className='container-fluid techlist_container'>
+      <div className='container-fluid techlist_container card'>
         <div className='techlist-header'>
-          What is this app made of?
+          What Is This App Made Of?
         </div>
         <hr />
         <div className='techlist'>
@@ -20,25 +26,51 @@ class TechList extends React.Component {
             <a href='https://reactjs.org/'>
               <img src={react} alt='reacr'></img>
             </a>
-            <p>React</p>
           </div>
           <div className='tool'>
             <a href='https://redux.js.org/'>
               <img src={redux} alt='redux'></img>
             </a>
-            <p>Redux</p>
           </div>
           <div className='tool'>
             <a href='https://www.mongodb.com/'>
               <img src={mongodb} alt='mongodb'></img>
             </a>
-            <p>MongoDB</p>
           </div>
           <div className='tool'>
             <a href='https://redislabs.com'>
               <img src={redis} alt='redis'></img>
             </a>
-            <p>Redis</p>
+          </div>
+          <div className='tool'>
+            <a href='https://scrapy.org/'>
+              <img src={scrapy} alt='scrapy'></img>
+            </a>
+          </div>
+          <div className='tool'>
+            <a href='https://www.nginx.com/'>
+              <img src={nginx} alt='nginx'></img>
+            </a>
+          </div>
+          <div className='tool'>
+            <a href='https://www.tensorflow.org/'>
+              <img src={tensorflow} alt='tensorflow'></img>
+            </a>
+          </div>
+          <div className='tool'>
+            <a href='https://www.nodejs.org/'>
+              <img src={nodejs} alt='nodejs'></img>
+            </a>
+          </div>
+          <div className='tool'>
+            <a href='https://www.expressjs.com/'>
+              <img src={express} alt='express'></img>
+            </a>
+          </div>
+          <div className='tool'>
+            <a href='https://www.docker.com/'>
+              <img src={docker} alt='docker'></img>
+            </a>
           </div>
         </div>
       </div>

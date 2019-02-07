@@ -5,6 +5,7 @@
 .techlist-header {
   font-size: 2.5em;
   text-align: center;
+  padding: 20px;
 }
 
 .techlist {
@@ -15,12 +16,16 @@
   align-items: center;
 }
 
-img {
-  height: 120px;
-  width: 180px;
+a img {
+  max-height: 120px;
+  max-width: 120px;
+}
+
+a img:hover {
+  transform: scale(1.5);
 }
 
 .tool {
   text-align: center;
-  margin: 10px;
+  margin: 50px;
 }
