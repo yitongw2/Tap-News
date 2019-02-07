@@ -1,3 +1,14 @@
+.timeline_container {
+  margin: 0;
+  background-color: #f2efef;
+  border-radius: 5px;
+}
+
+.timeline-header {
+  font-size: 2.5em;
+  text-align: center;
+}
+
 .timeline {
   position: relative;
   display: flex;
@@ -11,12 +22,27 @@
   bottom: 0;
   left: 50%;
   width: 6px;
-  background-color: blue;
+  background-color: grey;
   margin-left: -3px;
 }
 
 .event {
-  margin-bottom: 40px;
+  position: relative;
+  margin: 20px 0 20px;
+}
+
+.event::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 50%;
+  top: 15%;
+  margin-left: -12px;
+  background-color: red;
+  background-color: white;
+  border: 4px solid #FF9F55;
+  border-radius: 50%;
 }
 
 .panel {
@@ -24,8 +50,9 @@
   width: 46%;
   float: left;
   border: 1px solid #d4d4d4;
-  border-radius: 2px;
+  border-radius: 10px;
   padding: 20px;
+  background-color: white;
 }
 
 .panel_invert {
