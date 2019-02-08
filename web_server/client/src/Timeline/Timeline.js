@@ -27,9 +27,11 @@ class Timeline extends React.Component {
                   Currently, our news scource are below:
                 </p>
                 <ul className="list-group">
-                  <li className="list-group-item">Cras justo odio</li>
-                  <li className="list-group-item">Dapibus ac facilisis in</li>
-                  <li className="list-group-item">Vestibulum at eros</li>
+                  <li className="list-group-item">BBC News</li>
+                  <li className="list-group-item">CNN</li>
+                  <li className="list-group-item">Bloomberg</li>
+                  <li className="list-group-item">Bleacher Report</li>
+                  <li className="list-group-item">Reuters</li>
                 </ul>
               </div>
 
@@ -41,7 +43,12 @@ class Timeline extends React.Component {
                 <h5 className="card-title">News Scraper</h5>
                 <h6 className="card-subtitle mb-2 text-muted">A Scrapy spider that crawls news</h6>
                 <p className="card-text">
-                asdsa
+                  News scraper is a web spider written with <a href='https://scrapy.org/'>Scrapy</a>.
+                  It constantly listens for news abstract from the clould message queue.
+                  When no abstract is in the queue, it keeps idle and waits.
+                  Once it receives a news abstract, it starts to crawl the content of the news according to the url provided.
+                  Then, it parses the downloaded webpage and extracts the content of the news.
+                  Finally, it sends the complete news with content included.
                 </p>
               </div>
             </div>
@@ -52,7 +59,7 @@ class Timeline extends React.Component {
                 <h5 className="card-title">News Scraper</h5>
                 <h6 className="card-subtitle mb-2 text-muted">A Scrapy spider that crawls news</h6>
                 <p className="card-text">
-                  asdsa
+
                 </p>
               </div>
             </div>

@@ -1,5 +1,9 @@
 import './TechList.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPython, faJs } from '@fortawesome/free-brands-svg-icons'
+
 import redux from '../Resource/redux.png';
 import react from '../Resource/react.png';
 import mongodb from '../Resource/mongodb.png';
@@ -17,8 +21,21 @@ class TechList extends React.Component {
   render() {
     return (
       <div className='container-fluid techlist_container card'>
-        <div className='techlist-header'>
+        <div className='techlist_title'>
           What Is This App Made Of?
+        </div>
+        <div className='techlist_header'>
+          <div className='lang'>
+            <FontAwesomeIcon icon={faJs} size="lg" />
+            <span>Javascript</span>
+          </div>
+          <div className='lang'>
+            <FontAwesomeIcon icon={faPlus} size="md" />
+          </div>
+          <div className='lang'>
+            <FontAwesomeIcon icon={faPython} size="lg" />
+            <span>Python</span>
+          </div>
         </div>
         <hr />
         <div className='techlist'>
