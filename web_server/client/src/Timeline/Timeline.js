@@ -56,10 +56,12 @@ class Timeline extends React.Component {
           <div className='event'>
             <div className='panel card'>
               <div className="card-body">
-                <h5 className="card-title">News Scraper</h5>
-                <h6 className="card-subtitle mb-2 text-muted">A Scrapy spider that crawls news</h6>
+                <h5 className="card-title">News Deduper</h5>
+                <h6 className="card-subtitle mb-2 text-muted">Exclude duplicate news from queue</h6>
                 <p className="card-text">
-
+                  News deduper is an automated python script that waits for news from message queue.
+                  Once it receives a news, it first extracts today's news from MongoDB database and then convert them into tf-idf vector and compares their pairwise sim.
+                  If a news is confirmed to be unique, its content will be sent to news classifier for topic classification and inserted to MongoDB database.
                 </p>
               </div>
             </div>
