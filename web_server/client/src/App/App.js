@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     if (this.props.isLoggedIn) {
       return (
-        <div className='container'>
+        <div className='app_container container'>
           <div className='logo_container'>
             <img className='logo' src={logo} alt='logo'></img>
           </div>

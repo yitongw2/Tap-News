@@ -30,7 +30,7 @@ class TechList extends React.Component {
             <span>Javascript</span>
           </div>
           <div className='lang'>
-            <FontAwesomeIcon icon={faPlus} size="md" />
+            <FontAwesomeIcon icon={faPlus} size="lg" />
           </div>
           <div className='lang'>
             <FontAwesomeIcon icon={faPython} size="lg" />

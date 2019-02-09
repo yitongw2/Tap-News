@@ -11,7 +11,7 @@ import React from 'react';
 class IntroPage extends React.Component {
   render() {
     return (
-      <div className='container'>
+      <div className='intro_container container'>
         <Jumbotron className='jumbotron_container'>
           <h1 className="display-7">Welcome to Tap News</h1>
           <p className="lead">This is a website where you will find fresh news accommodated for your appetite.</p>
