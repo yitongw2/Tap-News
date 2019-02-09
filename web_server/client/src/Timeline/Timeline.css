@@ -54,6 +54,39 @@
   background-color: white;
 }
 
+.panel::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 100%;
+  border-top: 10px solid white;
+  border-left: 10px solid grey;
+  border-right: 0 solid transparent;
+  border-bottom: 10px solid white;
+}
+
 .panel_invert {
   float: right;
+}
+
+.panel_invert::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: -10px;
+  border-top: 10px solid white;
+  border-left: 0 solid transparent;
+  border-right: 10px solid grey;
+  border-bottom: 10px solid white;
+}
+
+.panel_invert::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 100%;
+  border-top: 0 solid white;
+  border-left: 0 solid white;
+  border-right: 0 solid transparent;
+  border-bottom: 0 solid white;
 }

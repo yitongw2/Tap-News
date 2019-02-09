@@ -38,7 +38,7 @@ class Timeline extends React.Component {
             </div>
           </div>
           <div className='event'>
-            <div className='panel panel_invert'>
+            <div className='panel panel_invert card'>
               <div className="card-body">
                 <h5 className="card-title">News Scraper</h5>
                 <h6 className="card-subtitle mb-2 text-muted">A Scrapy spider that crawls news</h6>
@@ -54,7 +54,7 @@ class Timeline extends React.Component {
             </div>
           </div>
           <div className='event'>
-            <div className='panel'>
+            <div className='panel card'>
               <div className="card-body">
                 <h5 className="card-title">News Scraper</h5>
                 <h6 className="card-subtitle mb-2 text-muted">A Scrapy spider that crawls news</h6>
