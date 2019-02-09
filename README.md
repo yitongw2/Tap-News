@@ -3,7 +3,7 @@
 Tap-News is a complex web application for users to view latest news around the globe. It is consist of a React front-end, multiple backend services including RESTful servers and RPC servers, a MongoDB database, a news scraper using Python Scrapy package as well as multiple cloud RabbitMQ message queues. In addition, the web application implements the functionality of classifying news by topics and recommending news according to user preference with time decay model.
 
   - Front-End
-    - React UI
+    - React + Redux
   - Back-End
     - Node.js server handling client-side requests
     - News Pipeline including obtaining news, deduping news and inserting news to database
@@ -17,10 +17,12 @@ Tap-News is a complex web application for users to view latest news around the g
 Tap-News uses a number of open source projects to work properly:
 
 * [React]() - javaScript library for building user interfaces
+* [Redux]() - open-source JavaScript library for managing application state. 
 * [node.js]() - evented I/O for the backend
 * [Express]() - fast node.js network app framework
 * [Twitter Bootstrap]() - great UI boilerplate for modern web apps
-* [Redis]() - open source (BSD licensed), in-memory data structure store, used as a cache 
+* [Redis]() - open source (BSD licensed), in-memory data structure store, used as a cache
+* [Firebase]() - mobile and web application development platform developed by Firebase
 * [MongoDB]() - open-source cross-platform document-oriented database program
 * [Cloudamqp]() - RabbitMQ as a Service
 * [jsonrpclib-pelix]() - implementation of the JSON-RPC v2.0 specification as a client library
