@@ -1,6 +1,6 @@
 # Tap-News
 
-Tap-News is a complex web application for users to view latest news around the globe. It is consist of a React front-end, multiple backend services including RESTful servers and RPC servers, a MongoDB database, a news scraper using Python Scrapy package as well as multiple cloud RabbitMQ message queues. In addition, the web application implements the functionality of classifying news by topics and recommending news according to user preference with time decay model.
+Tap-News is a complex web application for users to view latest news around the globe. It is consist of a React+Redux front-end, multiple backend services including RESTful servers and RPC servers, a MongoDB database, a news scraper using Python Scrapy package as well as multiple cloud RabbitMQ message queues. In addition, the web application implements the functionality of classifying news by topics and recommending news according to user preference with time decay model.
 
   - Front-End
     - React + Redux
