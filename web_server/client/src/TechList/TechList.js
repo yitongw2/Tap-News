@@ -14,6 +14,7 @@ import tensorflow from '../Resource/tensorflow.png';
 import nodejs from '../Resource/nodejs.png';
 import express from '../Resource/express.png';
 import docker from '../Resource/docker.png';
+import firebase from '../Resource/firebase.png';
 
 import React from 'react';
 
@@ -87,6 +88,11 @@ class TechList extends React.Component {
           <div className='tool'>
             <a href='https://www.docker.com/'>
               <img src={docker} alt='docker'></img>
+            </a>
+          </div>
+          <div className='tool'>
+            <a href='https://firebase.google.com/'>
+              <img src={firebase} alt='firebase'></img>
             </a>
           </div>
         </div>
