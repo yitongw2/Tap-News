@@ -48,3 +48,23 @@ a img:hover {
   text-align: center;
   margin: 50px;
 }
+
+@media screen and (max-width: 400px) {
+  .techlist_header {
+    font-size: 1.2em;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .lang {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0 10px;
+  }
+
+  .lang span {
+    padding: 10px 0 0;
+  }
+}
