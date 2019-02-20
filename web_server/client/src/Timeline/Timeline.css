@@ -90,3 +90,59 @@
   border-right: 0 solid transparent;
   border-bottom: 0 solid white;
 }
+
+@media screen and (max-width: 800px) {
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2%;
+    width: 6px;
+    background-color: grey;
+    margin-left: -3px;
+  }
+
+  .event::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 2%;
+    top: 15%;
+    margin-left: -9px;
+    background-color: red;
+    background-color: white;
+    border: 4px solid #FF9F55;
+    border-radius: 50%;
+  }
+
+
+  .panel {
+    position: relative;
+    width: 90%;
+    float: right;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+  }
+
+  .panel::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: -10px;
+    border-top: 10px solid white;
+    border-left: 0 solid transparent;
+    border-right: 10px solid grey;
+    border-bottom: 10px solid white;
+  }
+
+  .panel_invert::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: -10px;
+  }
+}
