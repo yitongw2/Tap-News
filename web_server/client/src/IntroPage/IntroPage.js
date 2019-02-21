@@ -5,6 +5,7 @@ import { Jumbotron, Button } from 'reactstrap';
 
 import Timeline from '../Timeline/Timeline';
 import TechList from '../TechList/TechList';
+import AboutMe from '../AboutMe/AboutMe';
 
 import React from 'react';
 
@@ -21,6 +22,7 @@ class IntroPage extends React.Component {
         </Jumbotron>
         <TechList />
         <Timeline />
+        <AboutMe />
       </div>
     );
   }
